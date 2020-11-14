@@ -10,7 +10,7 @@
     var comment = "<div>";
     console.log(comments[i].date);
     comment += comments[i].name + "<br>";
-    comment += comments[i].date + "<br>";
+    comment += new Date(comments[i].date*1000).toLocaleDateString(); + "<br>";
     comment += comments[i].text + "<br>";
 
     comment += "</div>";
