@@ -31,6 +31,7 @@
       e.preventDefault();
       let response = await fetch("https://joliroll.herokuapp.com/comments/", {
           method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
           body: {"name": document.getElementById("name").value,
                  "text": document.getElementById("text").value,
                  "slug": url[url.length - 1]
