@@ -31,11 +31,11 @@
   commentForm.addEventListener('submit', async function (e) {
     var url = window.location.href.split("/");
       e.preventDefault();
-      let response = await fetch("https://joliroll.herokuapp.com/comments/" + url[url.length - 1], {
+      let response = await fetch("https://joliroll.herokuapp.com/comments/" {
           method: 'POST',
           body: {"name": document.getElementById("name").value,
                  "text": document.getElementById("text").value,
-                 "date": Date.now()
+                 "slug": url[url.length - 1]
                 }
       });
 
