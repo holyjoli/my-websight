@@ -31,7 +31,7 @@
   commentForm.addEventListener('submit', async function (e) {
     var url = window.location.href.split("/");
       e.preventDefault();
-      let response = await fetch("https://joliroll.herokuapp.com/comments/" {
+      let response = await fetch("https://joliroll.herokuapp.com/comments/", {
           method: 'POST',
           body: {"name": document.getElementById("name").value,
                  "text": document.getElementById("text").value,
