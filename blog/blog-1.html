@@ -9,7 +9,7 @@
   for (var i = 0; i < comments.length; i++) {
     var comment = "<div>";
     comment += comments[i].name + "<br>";
-    comment += comments[i].date + "<br>";
+    comment += comments[i].date.DateTimeFormat('en') + "<br>";
     comment += comments[i].text + "<br>";
 
     comment += "</div>";
