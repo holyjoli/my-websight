@@ -2,6 +2,7 @@
 <div id="comments">
 </div>
 <script>
+  
   const userAction = async () => {
   const response = await fetch('https://joliroll.herokuapp.com/comments/2');
   const comments = await response.json(); //extract JSON from the http response
@@ -15,4 +16,5 @@
     document.getElementById('comments').innerHTML += comment;
   }
 }
+  userAction();
 </script>
