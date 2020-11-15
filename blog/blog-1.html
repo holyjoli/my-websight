@@ -16,9 +16,9 @@
   const response = await fetch(url);
   const comments = await response.json(); //extract JSON from the http response
   for (var i = 0; i < comments.length; i++) {
-    var comment = "<div>";
+    var comment = "<div style='position:relative'><div style='display:inline'";
     comment += "<h4>" + comments[i].name + "</h4>" + 
-               new Date(parseInt(comments[i].date)).toLocaleDateString(); + "<br>" +
+               new Date(parseInt(comments[i].date)).toLocaleDateString(); + "</div><br>" +
                comments[i].text + "<br>";
 
     comment += "</div>";
