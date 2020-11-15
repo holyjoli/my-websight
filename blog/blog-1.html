@@ -12,7 +12,7 @@
 <script>
   const userAction = async () => {
   var slug = window.location.href.split("/");
-  var url = "https://joliroll.herokuapp.com/comments/" + url[url.length - 1];
+  var url = "https://joliroll.herokuapp.com/comments/" + slug[slug.length - 1];
   const response = await fetch(url);
   const comments = await response.json(); //extract JSON from the http response
   for (var i = 0; i < comments.length; i++) {
