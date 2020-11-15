@@ -1,1 +1,47 @@
-<h3>Blog 1</h3>
+<h4>Comments</h4>
+<div id="comments">
+</div>
+<form id="commentForm">
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name"><br>
+  <label for="text">Comment:</label><br>
+  <input type="textarea" id="text" name="text">
+  <button id="send">Send Comment</button>
+</form>
+
+<script>
+  const userAction = async () => {
+  const response = await fetch('https://joliroll.herokuapp.com/comments/2');
+  const comments = await response.json(); //extract JSON from the http response
+  for (var i = 0; i < comments.length; i++) {
+    var comment = "<div>";
+    comment += "<h5>" + comments[i].name + "</h5>";
+    comment += new Date(parseInt(comments[i].date._seconds)*1000).toLocaleDateString(); + "<br>";
+    comment += comments[i].text + "<br>";
+
+    comment += "</div>";
+    document.getElementById('comments').innerHTML += comment;
+  }
+}
+  userAction();
+  
+  const commentForm = document.getElementById('commentForm');
+  commentForm.addEventListener('submit', async function (e) {
+      var url = window.location.href.split("/");
+      e.preventDefault();
+      var body = {name: document.getElementById("name").value,
+                 text: document.getElementById("text").value,
+                 slug: url[url.length - 1]
+                }
+      let response = await fetch("https://joliroll.herokuapp.com/comments/", {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
+          body: body
+      });
+
+      let result = await response.json();
+      alert(result.message)
+      console.log(result)
+  });
+
+</script>
