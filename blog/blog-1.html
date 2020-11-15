@@ -19,10 +19,10 @@
     var comment = "<div style='position:relative'><div style='display:inline'>";
     comment += "<h4 style='display:inline'>" + comments[i].name + "    </h4>" + 
                new Date(parseInt(comments[i].date)).toLocaleDateString(); + "</div>";
-    comment += "<br>" + comments[i].text;
+    comment += "<br></br>" + comments[i].text;
 
-    comment += "</div><br>";
-    document.getElementById('comments').innerHTML += comment;
+    comment += "</div>";
+    document.getElementById('comments').innerHTML += comment + "<br></br>;
   }
 }
   userAction();
