@@ -1,4 +1,4 @@
-document.insert(`
+document.write(`
   <h3>Comments</h3>
 <div id="comments">
 </div>
