@@ -6,7 +6,7 @@ document.write(`
   <label for="name">Name:</label><br>
   <input type="text" id="name" name="name"><br>
   <label for="text">Comment:</label><br>
-  <input type="textarea" id="text" name="text">
+  <textarea id="text" name="text"></textarea>
   <button id="send">Send Comment</button>
 </form>
 
