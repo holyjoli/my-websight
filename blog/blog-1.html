@@ -52,6 +52,8 @@
       if (result.status == "success") {
         alert(result.message)
         addComment(result.comment)
+      } else {
+        alert("FAIL! Try again later.")
       }
       
       console.log(result)
