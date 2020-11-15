@@ -10,11 +10,11 @@
 </form>
 
 <script>
-  function addComment(comment) {
+  function addComment(raw) {
     var comment = "<div style='position:relative'><div style='display:inline'>";
-    comment += "<h4 style='display:inline'>" + comment.name + "    </h4>" + 
-               new Date(parseInt(comment.date)).toLocaleDateString(); + "</div>";
-    comment += "<br></br>" + comment.text;
+    comment += "<h4 style='display:inline'>" + raw.name + "    </h4>" + 
+               new Date(parseInt(raw.date)).toLocaleDateString(); + "</div>";
+    comment += "<br></br>" + raw.text;
 
     comment += "</div>";
     document.getElementById('comments').innerHTML += comment + "<br></br><br></br>";
