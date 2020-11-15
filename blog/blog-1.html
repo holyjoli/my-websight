@@ -1,4 +1,4 @@
-<h4>Comments</h4>
+<h3>Comments</h3>
 <div id="comments">
 </div>
 <form id="commentForm">
@@ -10,20 +10,24 @@
 </form>
 
 <script>
-  const userAction = async () => {
-  var slug = window.location.href.split("/");
-  var url = "https://joliroll.herokuapp.com/comments/" + slug[slug.length - 1];
-  const response = await fetch(url);
-  const comments = await response.json(); //extract JSON from the http response
-  for (var i = 0; i < comments.length; i++) {
+  function addComment(comment) {
     var comment = "<div style='position:relative'><div style='display:inline'>";
-    comment += "<h4 style='display:inline'>" + comments[i].name + "    </h4>" + 
-               new Date(parseInt(comments[i].date)).toLocaleDateString(); + "</div>";
-    comment += "<br></br>" + comments[i].text;
+    comment += "<h4 style='display:inline'>" + comment.name + "    </h4>" + 
+               new Date(parseInt(comment.date)).toLocaleDateString(); + "</div>";
+    comment += "<br></br>" + comment.text;
 
     comment += "</div>";
     document.getElementById('comments').innerHTML += comment + "<br></br><br></br>";
   }
+  
+  const userAction = async () => {
+    var slug = window.location.href.split("/");
+    var url = "https://joliroll.herokuapp.com/comments/" + slug[slug.length - 1];
+    const response = await fetch(url);
+    const comments = await response.json(); //extract JSON from the http response
+    for (var i = 0; i < comments.length; i++) {
+      addComment(comments[i]);
+    }
 }
   userAction();
   
@@ -42,10 +46,14 @@
           body: JSON.stringify(body)
       };
     
-      let response = await fetch("https://joliroll.herokuapp.com/comments", varis);
+      var response = await fetch("https://joliroll.herokuapp.com/comments", varis);
 
-      let result = await response.json();
-      alert(result.message)
+      var result = await response.json();
+      if (result.status == "success") {
+        alert(result.message)
+        addComment(result.comment)
+      }
+      
       console.log(result)
   });
 
