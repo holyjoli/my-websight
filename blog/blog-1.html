@@ -17,9 +17,9 @@
   const comments = await response.json(); //extract JSON from the http response
   for (var i = 0; i < comments.length; i++) {
     var comment = "<div>";
-    comment += "<h5>" + comments[i].name + "</h5>";
-    comment += new Date(parseInt(comments[i].date)*1000).toLocaleDateString(); + "<br>";
-    comment += comments[i].text + "<br>";
+    comment += "<h4>" + comments[i].name + "</h4>" + 
+               new Date(parseInt(comments[i].date)*1000).toLocaleDateString(); + "<br>" +
+               comments[i].text + "<br>";
 
     comment += "</div>";
     document.getElementById('comments').innerHTML += comment;
