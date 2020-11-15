@@ -18,7 +18,7 @@
   for (var i = 0; i < comments.length; i++) {
     var comment = "<div>";
     comment += "<h4>" + comments[i].name + "</h4>" + 
-               new Date(parseInt(comments[i].date)*1000).toLocaleDateString(); + "<br>" +
+               new Date(parseInt(comments[i].date)).toLocaleDateString(); + "<br>" +
                comments[i].text + "<br>";
 
     comment += "</div>";
