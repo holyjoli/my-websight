@@ -68,7 +68,7 @@
         <button id="pray" onclick="regi()">Pray</button>
     </div>
     <div id="for">
-        <textarea id="fortunebox" placeholder="Type anything, gibberish or not, and I will give you a premonition of the future"></textarea>
+        <textarea id="fortunebox" placeholder="Press your hands gently gainst the keyboard, and I will give you a premonition of the future"></textarea>
 <br>
         <button id="fortune">Fortune</button>
         <div id="fortuneresults">
@@ -132,11 +132,18 @@ const regi = () => {
       };
     
       var response = await fetch("https://joliroll.herokuapp.com/fortune", varis);
-
       var result = await response.json();
-      if (result.status == "success") {
+
+      var drink = "";
+      var picture = "";
+
+      if (result.drink) {
         alert("Fortune granted.");
-        document.getElementById('fortuneresults').innerHTML = "<img src='" + result.picture + "' /><p style='color:white;'>Your drink: " + result.drink + "</p>"
+        drink = "<p style='color:white;'>Your drink: " + result.drink + "</p>";
+        if (result.picture) {
+          picture = "<img src='" + result.picture + "' />"
+        }
+        document.getElementById('fortuneresults').innerHTML = drink + picture;
         
       } else {
         alert("FAIL! She could not hear you. Try again later...")
