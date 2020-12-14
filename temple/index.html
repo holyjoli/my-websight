@@ -66,11 +66,11 @@
 <script>
 function addComment(raw) {
     var div = document.getElementById('container'),
-        divWidth = Math.floor( Math.random() * div.style.width ),
-        divHeight =  Math.floor( Math.random() * div.style.height );
+        divWidth = Math.floor( Math.random() * div.style.clientWidth ),
+        divHeight =  Math.floor( Math.random() * div.style.clientHeight );
     
 
-    var prayer = "<div style='color:white;position:absolute; opacity:" + Math.random() + "width:" + divWidth + "; height: " + divHeight + "'>";
+    var prayer = "<div style='color:white;position:absolute; opacity:" + Math.random() + "; width:" + divWidth + "; height: " + divHeight + "'>";
     prayer += raw.text;
     prayer += "</div>";
     document.getElementById('container').innerHTML += prayer;
