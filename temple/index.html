@@ -5,12 +5,25 @@
 </head>
 
 <style>
+  #container {
+    position: relative;
+    width:100%;
+    height:100%;
+  }
+  #pra {
+    position: absolute;
+    top:0px;
+    left:0px;
+  }
+  #for {
+    position: absolute;
+    top:0px;
+    right:0px;
+  }
   #temple {
     position: absolute;
     margin: auto;
-    top: 0;
     right: 0;
-    bottom: 0;
     left: 0;
     
   }
@@ -21,12 +34,83 @@
     bottom: 10vh;
     left: 0;
   }
+  #prayerbox {
+    width:200px;
+  }
+  #fortunebox {
+    width:300px;
+    height:70px;
+  }
+  #for {
+    float:right;
+  }
 </style>
 <body style="background-color:black">
   <div id="container">
     <img id="temple" src="./2.gif">
     <img id="offering" src="./coffee.png">
-    <button>Pray</button>
-    <button>Fortune</button>
+
+    <div id ="pra">
+        <textarea id="prayerbox" placeholder="what do you wish for?"></textarea>
+        <br>
+        <button id="pray">Pray</button>
+    </div>
+    <div id="for">
+        <textarea id="fortunebox" placeholder="Type anything, and I will give you a premonition of the future"></textarea>
+<br>
+        <button id="fortune">Fortune</button>
+    </div>
   </div>
 </body>
+
+<script>
+function addComment(raw) {
+    var div = document.getElementById('container'),
+        divWidth = Math.floor( Math.random() * div.style.width ),
+        divHeight =  Math.floor( Math.random() * div.style.height );
+
+    var prayer = "<div style='position:absolute; width:" + divWidth + "; height: " + divHeight + "'>";
+    comment += raw.text;
+    comment += "</div>";
+    document.getElementById('container').innerHTML += comment;
+  }
+  
+  const userAction = async () => {
+    var slug = window.location.href.split("/");
+    var url = "https://joliroll.herokuapp.com/comments/" + slug[slug.length - 1];
+    const response = await fetch(url);
+    const comments = await response.json(); //extract JSON from the http response
+    for (var i = 0; i < comments.length; i++) {
+      addComment(comments[i]);
+    }
+}
+  userAction();
+
+const pray = document.getElementById('pray');
+  pray.addEventListener('click', async function (e) {
+      var url = window.location.href.split("/");
+      e.preventDefault();
+      var body = {name: "pray",
+                 text: document.getElementById("prayerbox").value,
+                 slug: url[url.length - 1]
+                }
+      
+      var varis = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
+          body: JSON.stringify(body)
+      };
+    
+      var response = await fetch("https://joliroll.herokuapp.com/comments", varis);
+
+      var result = await response.json();
+      if (result.status == "success") {
+        alert("Prayer received");
+        
+      } else {
+        alert("FAIL! She could not hear you. Try again later...")
+      }
+      
+      console.log(result)
+  });
+</script>
