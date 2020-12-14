@@ -60,7 +60,7 @@
     <div id ="pra">
         <textarea id="prayerbox" placeholder="what do you wish for?"></textarea>
         <br>
-        <button id="pray" onclick="pray(e)">Pray</button>
+        <button id="pray">Pray</button>
     </div>
     <div id="for">
         <textarea id="fortunebox" placeholder="Type anything, and I will give you a premonition of the future"></textarea>
@@ -74,8 +74,8 @@
 </body>
 
 <script>
-
-async function pray(e) {
+function reg() {
+  document.getElementById('pray').addEventListener('click', async function (e) {
       var url = window.location.href.split("/");
       e.preventDefault();
       var body = {name: (Math.floor(Math.random() * 5) + 1).toString(),
@@ -99,7 +99,9 @@ async function pray(e) {
         alert("FAIL! She could not hear you. Try again later...")
       }
 
-  };
+  });
+}
+
 function addComment(raw) {
     var div = document.getElementById('container'),
         left = Math.floor( Math.random() * div.clientWidth ),
@@ -128,6 +130,7 @@ function addInsense(name) {
     }
 }
   userAction();
+  reg();
 
   
 </script>
