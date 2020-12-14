@@ -103,8 +103,7 @@ function addInsense(name) {
 }
   userAction();
 
-const pray = document.getElementById('pray');
-  pray.addEventListener('click', async function (e) {
+  document.getElementById('pray').addEventListener('click', async function (e) {
       var url = window.location.href.split("/");
       e.preventDefault();
       var body = {name: (Math.floor(Math.random() * 5) + 1).toString(),
