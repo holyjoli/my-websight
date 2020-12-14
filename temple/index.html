@@ -103,15 +103,18 @@ const regi = () => {
           headers: { 'Content-Type': 'application/json'},
           body: JSON.stringify(body)
       };
-    
-      var response = await fetch("https://joliroll.herokuapp.com/comments", varis);
-
-      var result = await response.json();
-      if (result.status == "success") {
-        alert("Prayer received");
-        
-      } else {
-        alert("FAIL! She could not hear you. Try again later...")
+      
+      try {
+        var response = await fetch("https://joliroll.herokuapp.com/comments", varis);
+        var result = await response.json();
+        if (result.status == "success") {
+          alert("Prayer received");
+          
+        } else {
+          alert("FAIL! She could not hear you. Try again later...")
+        }
+      } catch {
+        alert("FAIL! Don't be greedy...")
       }
     }
   });
@@ -130,24 +133,29 @@ const regi = () => {
           headers: { 'Content-Type': 'application/json'},
           body: JSON.stringify(body)
       };
-    
-      var response = await fetch("https://joliroll.herokuapp.com/fortune", varis);
-      var result = await response.json();
+      
+      try {
+        var response = await fetch("https://joliroll.herokuapp.com/fortune", varis);
+        var result = await response.json();
 
-      var drink = "";
-      var picture = "";
+        var drink = "";
+        var picture = "";
 
-      if (result.drink) {
-        alert("Fortune granted.");
-        drink = "<p style='color:white;'>Your drink: " + result.drink + "</p>";
-        if (result.picture) {
-          picture = "<img src='" + result.picture + "' />"
+        if (result.drink) {
+          alert("Fortune granted.");
+          drink = "<p style='color:white;'>Your drink: " + result.drink + "</p>";
+          if (result.picture) {
+            picture = "<img src='" + result.picture + "' />"
+          }
+          document.getElementById('fortuneresults').innerHTML = drink + picture;
+          
+        } else {
+          alert("FAIL! She could not hear you. Try again later...")
         }
-        document.getElementById('fortuneresults').innerHTML = drink + picture;
-        
-      } else {
-        alert("FAIL! She could not hear you. Try again later...")
+      } catch {
+        alert("FAIL! Don't be greedy...")
       }
+      
     }
   });
 }
