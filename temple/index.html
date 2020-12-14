@@ -51,6 +51,11 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .insense {
+    width:100px;
+    height:100px;
+  }
 </style>
 <body style="background-color:black">
   <div id="container">
@@ -117,7 +122,7 @@ function addComment(raw) {
   }
 
 function addInsense(name) { 
-    var insense = "<img src='" + name + ".png' />";
+    var insense = "<img class='insense' src='" + name + ".png' />";
     document.getElementById('insensebox').innerHTML += insense;
 }
   
