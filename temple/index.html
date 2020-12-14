@@ -66,8 +66,8 @@
 <script>
 function addComment(raw) {
     var div = document.getElementById('container'),
-        divWidth = Math.floor( Math.random() * div.style.clientWidth ),
-        divHeight =  Math.floor( Math.random() * div.style.clientHeight );
+        divWidth = Math.floor( Math.random() * div.clientWidth ),
+        divHeight =  Math.floor( Math.random() * div.clientHeight );
     
 
     var prayer = "<div style='color:white;position:absolute; opacity:" + Math.random() + "; width:" + divWidth + "; height: " + divHeight + "'>";
