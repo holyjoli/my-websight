@@ -31,7 +31,7 @@
     position: absolute;
     margin: auto;
     right: 0;
-    bottom: 10vh;
+    bottom: 20vh;
     left: 0;
   }
   #prayerbox {
@@ -115,7 +115,7 @@ function addComment(raw) {
         bottom =  Math.floor( Math.random() * div.clientHeight );
     
 
-    var prayer = "<div style='color:white;position:absolute; opacity:" + Math.random() + "; left:" + left + "; bottom: " + bottom + "'>";
+    var prayer = "<div style='color:white;position:absolute; opacity:" + Math.random() + "; left:" + left + "px; bottom: " + bottom + "px;'>";
     prayer += raw.text;
     prayer += "</div>";
     document.getElementById('container').innerHTML += prayer;
