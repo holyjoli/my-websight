@@ -67,14 +67,13 @@
 function addComment(raw) {
     var div = document.getElementById('container'),
         divWidth = Math.floor( Math.random() * div.style.width ),
-        divHeight =  Math.floor( Math.random() * div.style.height ),
-        comment;
+        divHeight =  Math.floor( Math.random() * div.style.height );
     
 
-    var prayer = "<div style='position:absolute; width:" + divWidth + "; height: " + divHeight + "'>";
-    comment += raw.text;
-    comment += "</div>";
-    document.getElementById('container').innerHTML += comment;
+    var prayer = "<div style='color:white;position:absolute; opacity:" + Math.random() + "width:" + divWidth + "; height: " + divHeight + "'>";
+    prayer += raw.text;
+    prayer += "</div>";
+    document.getElementById('container').innerHTML += prayer;
   }
   
   const userAction = async () => {
