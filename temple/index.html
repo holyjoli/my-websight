@@ -67,7 +67,9 @@
 function addComment(raw) {
     var div = document.getElementById('container'),
         divWidth = Math.floor( Math.random() * div.style.width ),
-        divHeight =  Math.floor( Math.random() * div.style.height );
+        divHeight =  Math.floor( Math.random() * div.style.height ),
+        comment;
+    
 
     var prayer = "<div style='position:absolute; width:" + divWidth + "; height: " + divHeight + "'>";
     comment += raw.text;
@@ -110,7 +112,6 @@ const pray = document.getElementById('pray');
       } else {
         alert("FAIL! She could not hear you. Try again later...")
       }
-      
-      console.log(result)
+
   });
 </script>
