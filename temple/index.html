@@ -60,7 +60,7 @@
     <div id ="pra">
         <textarea id="prayerbox" placeholder="what do you wish for?"></textarea>
         <br>
-        <button id="pray">Pray</button>
+        <button id="pray" onclick="regi()">Pray</button>
     </div>
     <div id="for">
         <textarea id="fortunebox" placeholder="Type anything, and I will give you a premonition of the future"></textarea>
@@ -74,7 +74,7 @@
 </body>
 
 <script>
-function reg() {
+const regi = () => {
   document.getElementById('pray').addEventListener('click', async function (e) {
       var url = window.location.href.split("/");
       e.preventDefault();
@@ -130,7 +130,7 @@ function addInsense(name) {
     }
 }
   userAction();
-  reg();
+  regi();
 
   
 </script>
