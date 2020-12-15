@@ -1,7 +1,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Joliroll.ml</title>
+  <title>joliroll.ml</title>
 </head>
 
 <style>
@@ -109,7 +109,7 @@ const regi = () => {
         var result = await response.json();
         if (result.status == "success") {
           alert("Prayer received");
-          
+          userAction();
         } else {
           alert("FAIL! She could not hear you. Try again later...")
         }

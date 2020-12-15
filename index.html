@@ -2,7 +2,7 @@
 	
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joliroll.ml</title>
+<title>joliroll.ml</title>
 
 </head>
 
@@ -12,14 +12,14 @@
     background-color:darkcyan;
   }
   #header {
-	  width: 50%;
-	  color:gold;
-	  
+    width: 200px;
+    color: gold;
     font-style: oblique;
     font-size: 300%;
-    display: block;
+    display: inherit;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 	.fire {
     width:50px;
@@ -35,18 +35,23 @@
 }
 
   #links {
+    background-color: gold;
+    width: 100px;
+    height: 120px;
     position: absolute;
     margin: auto;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    width: 0;
-    height: 0;
     font-size: 200%;
   }
-  #container {
-    
+  #intro{
+    width:600px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: inherit;
   }
   a:link {
     color: maroon;
@@ -59,48 +64,7 @@
     text-decoration: none;
   }
 	
-  .scroll-left {
-    height: 50px;	
-    overflow: hidden;
-    position: relative;
-   }
-   .scroll-left p {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    line-height: 50px;
-    text-align: center;
-    /* Starting position */
-    -moz-transform:translateX(100%);
-    -webkit-transform:translateX(100%);	
-    transform:translateX(100%);
-    /* Apply animation to this element */	
-    -moz-animation: scroll-left 10s linear infinite;
-    -webkit-animation: scroll-left 10s linear infinite;
-    animation: scroll-left 10s linear infinite;
-   }
-   /* Move it (define the animation) */
-   @-moz-keyframes scroll-left {
-    0%   { -moz-transform: translateX(100%); }
-    100% { -moz-transform: translateX(-100%); }
-   }
-   @-webkit-keyframes scroll-left {
-    0%   { -webkit-transform: translateX(100%); }
-    100% { -webkit-transform: translateX(-100%); }
-   }
-   @keyframes scroll-left {
-    0%   { 
-    -moz-transform: translateX(100%); /* Browser bug fix */
-    -webkit-transform: translateX(100%); /* Browser bug fix */
-    transform: translateX(100%); 		
-    }
-    100% { 
-    -moz-transform: translateX(-100%); /* Browser bug fix */
-    -webkit-transform: translateX(-100%); /* Browser bug fix */
-    transform: translateX(-100%); 
-    }
-   }
+   
   
   
 </style>
@@ -108,11 +72,8 @@
 <body>
   <div id="container">
 	  <div id="header" class="scroll-left">
-	    <p>
-		It's Joli!
-		<p>
-
-	</div>
+	    joliroll.ml
+    </div>
 	<div id="fire-container">
 	    <img src="flame.gif" class="fire" /> <img src="flame.gif" class="fire" /> <img src="flame.gif"
 		class="fire" /> <img src="flame.gif" class="fire" /> <img src="flame.gif" class="fire" /> <img
@@ -127,10 +88,11 @@
 		class="fire" /> <img src="flame.gif" class="fire" /> <img src="flame.gif" class="fire" /> <img
 		src="flame.gif" class="fire" />
 	</div>
-	  <img src="./intro.jpg"/>
+	  <img id="intro" src="./intro.jpg"/>
     <div id="links">
       <a href="./story/index.html">Story</a>
-      <a href="./temple/index.html">Temple</a>
+      <p>
+      <a href="./temple/temple.html">Temple</a>
     </div>
   </div>
   
