@@ -66,14 +66,6 @@
         <br>
         <button id="pray" onclick="regi()">Pray</button>
     </div>
-    <div id="for">
-        <textarea id="fortunebox" placeholder="Keysmash, and I will give you a premonition of the future"></textarea>
-<br>
-        <button id="fortune" onclick="regi()">Fortune</button>
-        <div id="fortuneresults">
-          
-        </div>
-    </div>
     <div id="insensebox">
         
     </div>
@@ -81,83 +73,13 @@
 </body>
 
 <script>
-  var oldpray;
-  var oldfort;
 const regi = () => {
-  document.getElementById('pray').addEventListener('click', async function (e) {
     var prayer = document.getElementById("prayerbox").value;
     
-    if (prayer !== "" && prayer !== oldpray){
-      // prevent double clicks
-      oldpray = prayer;
-      var url = window.location.href.split("/");
-      e.preventDefault();
-      var body = {name: (Math.floor(Math.random() * 5) + 1).toString(),
-                 text: prayer,
-                 slug: url[url.length - 1]
-                }
-      
-      var varis = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json'},
-          body: JSON.stringify(body)
-      };
-      
-      try {
-        var response = await fetch("https://joliroll.herokuapp.com/comments", varis);
-        var result = await response.json();
-        if (result.status == "success") {
-          alert("Prayer received");
-          userAction();
-        } else {
-          alert("FAIL! She could not hear you. Try again later...")
-        }
-      } catch {
-        alert("FAIL! Don't be greedy...")
-      }
-    }
-  });
+      addComment(prayer);
+      addInsense();
 
-  document.getElementById('fortune').addEventListener('click', async function (e) {
-    var fortune = document.getElementById("fortunebox").value;
-    if (fortune !== "" && fortune !== oldfort){
-      //prevent double clicks
-      oldfort = fortune;
-      var url = window.location.href.split("/");
-      e.preventDefault();
-      var body = { text: fortune }
-      
-      var varis = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json'},
-          body: JSON.stringify(body)
-      };
-      
-      try {
-        var response = await fetch("https://joliroll.herokuapp.com/fortune", varis);
-        var result = await response.json();
-
-        var drink = "";
-        var picture = "";
-
-        if (result.drink) {
-          alert("Fortune granted.");
-          drink = "<p style='color:white;'>Your drink: " + result.drink + "</p>";
-          if (result.picture) {
-            picture = "<img src='" + result.picture + "' />"
-          }
-          document.getElementById('fortuneresults').innerHTML = drink + picture;
-          
-        } else {
-          alert("FAIL! She could not hear you. Try again later...")
-        }
-      } catch {
-        alert("FAIL! Don't be greedy...")
-      }
-      
-    }
-  });
-}
+  }
 
 function addComment(raw) {
     var div = document.getElementById('container'),
@@ -166,27 +88,14 @@ function addComment(raw) {
     
 
     var prayer = "<div style='color:white;position:absolute; opacity:" + Math.random() + "; left:" + left + "px; bottom: " + bottom + "px;'>";
-    prayer += raw.text;
+    prayer += raw;
     prayer += "</div>";
     document.getElementById('container').innerHTML += prayer;
   }
 
-function addInsense(name) { 
-    var insense = "<img class='insense' src='" + name + ".png' />";
+function addInsense() { 
+    var insense = "<img class='insense' src='" + Math.floor((Math. random() * (5 - 1) + 1)) + ".png' />";
     document.getElementById('insensebox').innerHTML += insense;
 }
-  
-  const userAction = async () => {
-    var slug = window.location.href.split("/");
-    var url = "https://joliroll.herokuapp.com/comments/" + slug[slug.length - 1];
-    const response = await fetch(url);
-    const comments = await response.json(); //extract JSON from the http response
-    for (var i = 0; i < comments.length; i++) {
-      addComment(comments[i]);
-      addInsense(comments[i].name);
-    }
-}
-  userAction();
-  setTimeout(regi, 900);
 
 </script>
